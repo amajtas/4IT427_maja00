@@ -1,9 +1,6 @@
-interface FilmCardProps {
-    title: string;
-    year: number;
-    genre: string;
-    rating: number;
-    watched: boolean,
+import type { Film } from "@/types/film.types";
+
+interface FilmCardProps extends Film{
     onToggleWatched: (title: string) => void;
 }
 

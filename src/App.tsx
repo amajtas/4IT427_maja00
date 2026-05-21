@@ -1,5 +1,7 @@
 import FilmCard from "./components/FilmCard";
-const films = [
+import { useWatchlist } from "./hooks/useWatchlist";
+import type { Film } from "./types/film.types";
+const INITIAL_MOVIES: Film[] = [
   {
     title: "Leví kráľ",
     year: 1994,
@@ -24,20 +26,24 @@ const films = [
 ];
 
 function App() {
-  const handleToggleWatched = (title: string) => {
-    console.log(`Kliknuto na film: ${title}`);
-  };
+  const { films, toggleWatched, markAllAsWatched } = useWatchlist(INITIAL_MOVIES);;
   return (
     <main>
       <h1>Film Watchlist</h1>
+      <button
+        onClick={markAllAsWatched}
+      >
+        Označit vše jako zhlédnuté
+      </button>
       {films.map((film) => (
         <FilmCard
+          key={film.title}
           title={film.title}
           year={film.year}
           genre={film.genre}
           rating={film.rating}
           watched={film.watched}
-          onToggleWatched={handleToggleWatched}
+          onToggleWatched={toggleWatched}
         />
       ))}
     </main>
