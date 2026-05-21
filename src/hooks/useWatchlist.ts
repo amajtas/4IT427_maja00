@@ -27,7 +27,7 @@ export function useWatchlist(initialFilms: Film[]) {
         const totalCount = films.length;
 
         //Zmenime titulok v prehliadaci
-        document.title = 'Watchlist (${watchedCount} / ${totalCount} zhlednuto';
+        document.title = `Watchlist (${watchedCount} / ${totalCount} zhlednuto`;
 
     }, [films]);
 
