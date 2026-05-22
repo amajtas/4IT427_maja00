@@ -1,5 +1,6 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import type { Film } from "@/types/film.types";
+import { useQuery } from "@tanstack/react-query";
 
 // Zadefinujeme, čo všetko náš centrálny sklad poskytuje
 interface WatchlistContextValue {
@@ -8,48 +9,43 @@ interface WatchlistContextValue {
     removeFilm: (id: string) => void;
     markAllAsWatched: () => void;
     toggleWatched: (id: string) => void;
+    isLoading: boolean;
+    error: Error | null;
 }
 
 
 // Vytvorenie Contextu
 const WatchlistContext = createContext<WatchlistContextValue | null>(null);
 
-const INITIAL_MOVIES: Film[] = [
-    {
-        id: "1",
-        title: "Leví kráľ",
-        year: 1994,
-        genre: "Animovaný / Rodinný",
-        rating: 9,
-        watched: true,
-    },
-    {
-        id: "2",
-        title: "Ľadové kráľovstvo",
-        year: 2013,
-        genre: "Animovaný / Muzikál",
-        rating: 8,
-        watched: false,
-    },
-    {
-        id: "3",
-        title: "Mulan",
-        year: 1998,
-        genre: "Animovaný / Dobrodružný",
-        rating: 8,
-        watched: true,
-    },
-];
 
 // Provider
 export function WatchlistProvider({ children }: { children: ReactNode }) {
-    const [films, setFilms] = useState<Film[]>(INITIAL_MOVIES);
+    const [films, setFilms] = useState<Film[]>([]);
+
+    //Stiahnutie dat z naseho simulovaneho API
+    const { data, isLoading, error } = useQuery<Film[], Error>({
+        queryKey: ["films"],
+        queryFn: async () => {
+            const response = await fetch("/films.json");
+            if (!response.ok) {
+                throw new Error("Nepodarilo sa načítať súboru z JSON")
+
+            }
+            return response.json();
+        }
+    });
+
+    useEffect(() => {
+        if (data && films.length===0) {
+            setFilms(data);
+        }
+    }, [data]);
 
     // Funkcia na pridanie filmu
     const addFilm = (newFilmData: Omit<Film, "id" | "watched">) => {
         const newFilm: Film = {
             ...newFilmData,
-            id: crypto.randomUUID(),
+            id: Date.now().toString(),
             watched: false,
         };
         setFilms((prev) => [...prev, newFilm]);
@@ -74,7 +70,7 @@ export function WatchlistProvider({ children }: { children: ReactNode }) {
 
     return (
         <WatchlistContext.Provider
-            value={{ films, addFilm, removeFilm, toggleWatched, markAllAsWatched }}
+            value={{ films, addFilm, removeFilm, toggleWatched, markAllAsWatched, isLoading, error }}
         >
             {children}
         </WatchlistContext.Provider>

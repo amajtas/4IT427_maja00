@@ -13,7 +13,6 @@ function App() {
 
   return (
     <main className={styles.container}>
-
       <header className={styles.header}>
         <nav className={styles.nav}>
           <NavLink

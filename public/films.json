@@ -1,0 +1,162 @@
+[
+  {
+    "id": "1",
+    "title": "Duna: Časť druhá",
+    "year": 2024,
+    "genre": "Sci-Fi / Akčný",
+    "rating": 9,
+    "watched": false
+  },
+  {
+    "id": "2",
+    "title": "Oppenheimer",
+    "year": 2023,
+    "genre": "Dráma / Historický",
+    "rating": 9,
+    "watched": true
+  },
+  {
+    "id": "3",
+    "title": "Interstellar",
+    "year": 2014,
+    "genre": "Sci-Fi / Dobrodružný",
+    "rating": 10,
+    "watched": true
+  },
+  {
+    "id": "4",
+    "title": "John Wick 4",
+    "year": 2023,
+    "genre": "Akčný / Thriller",
+    "rating": 8,
+    "watched": false
+  },
+  {
+    "id": "5",
+    "title": "The Batman",
+    "year": 2022,
+    "genre": "Akčný / Krimi",
+    "rating": 8,
+    "watched": true
+  },
+  {
+    "id": "6",
+    "title": "Avatar: Cesta vody",
+    "year": 2022,
+    "genre": "Sci-Fi / Fantasy",
+    "rating": 8,
+    "watched": false
+  },
+  {
+    "id": "7",
+    "title": "Top Gun: Maverick",
+    "year": 2022,
+    "genre": "Akčný / Dráma",
+    "rating": 9,
+    "watched": true
+  },
+  {
+    "id": "8",
+    "title": "Spider-Man: Bez domova",
+    "year": 2021,
+    "genre": "Akčný / Fantasy",
+    "rating": 9,
+    "watched": true
+  },
+  {
+    "id": "9",
+    "title": "Tenet",
+    "year": 2020,
+    "genre": "Sci-Fi / Thriller",
+    "rating": 8,
+    "watched": false
+  },
+  {
+    "id": "10",
+    "title": "Joker",
+    "year": 2019,
+    "genre": "Dráma / Thriller",
+    "rating": 9,
+    "watched": true
+  },
+  {
+    "id": "11",
+    "title": "Avengers: Endgame",
+    "year": 2019,
+    "genre": "Akčný / Sci-Fi",
+    "rating": 10,
+    "watched": true
+  },
+  {
+    "id": "12",
+    "title": "Blade Runner 2049",
+    "year": 2017,
+    "genre": "Sci-Fi / Thriller",
+    "rating": 9,
+    "watched": false
+  },
+  {
+    "id": "13",
+    "title": "Mad Max: Fury Road",
+    "year": 2015,
+    "genre": "Akčný / Dobrodružný",
+    "rating": 9,
+    "watched": true
+  },
+  {
+    "id": "14",
+    "title": "Whiplash",
+    "year": 2014,
+    "genre": "Dráma / Hudobný",
+    "rating": 10,
+    "watched": true
+  },
+  {
+    "id": "15",
+    "title": "Inception",
+    "year": 2010,
+    "genre": "Sci-Fi / Akčný",
+    "rating": 10,
+    "watched": true
+  },
+  {
+    "id": "16",
+    "title": "Gladiátor",
+    "year": 2000,
+    "genre": "Historický / Akčný",
+    "rating": 9,
+    "watched": false
+  },
+  {
+    "id": "17",
+    "title": "Pán prsteňov: Návrat kráľa",
+    "year": 2003,
+    "genre": "Fantasy / Dobrodružný",
+    "rating": 10,
+    "watched": true
+  },
+  {
+    "id": "18",
+    "title": "Matrix",
+    "year": 1999,
+    "genre": "Sci-Fi / Akčný",
+    "rating": 10,
+    "watched": true
+  },
+  {
+    "id": "19",
+    "title": "Fight Club",
+    "year": 1999,
+    "genre": "Dráma / Thriller",
+    "rating": 9,
+    "watched": false
+  },
+  {
+    "id": "20",
+    "title": "Forrest Gump",
+    "year": 1994,
+    "genre": "Dráma / Romantický",
+    "rating": 10,
+    "watched": true
+  }
+]
