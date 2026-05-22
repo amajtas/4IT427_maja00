@@ -1,51 +1,41 @@
 import FilmCard from "./components/FilmCard";
-import { useWatchlist } from "./hooks/useWatchlist";
-import type { Film } from "./types/film.types";
-const INITIAL_MOVIES: Film[] = [
-  {
-    title: "Leví kráľ",
-    year: 1994,
-    genre: "Animovaný / Rodinný",
-    rating: 9,
-    watched: true,
-  },
-  {
-    title: "Ľadové kráľovstvo",
-    year: 2013,
-    genre: "Animovaný / Muzikál",
-    rating: 8,
-    watched: false,
-  },
-  {
-    title: "Mulan",
-    year: 1998,
-    genre: "Animovaný / Dobrodružný",
-    rating: 8,
-    watched: true,
-  },
-];
+import { useWatchlist } from "./context/WatchlistContext";
+import { AddFilmForm } from "./components/AddFilmForm";
+
 
 function App() {
-  const { films, toggleWatched, markAllAsWatched } = useWatchlist(INITIAL_MOVIES);;
+
+  const { films, toggleWatched, removeFilm, markAllAsWatched } = useWatchlist();
+  // 2. Výpočet pre štatistiku v záhlaví
+  const total = films.length;
+  const watchedCount = films.filter((f) => f.watched).length;
+
   return (
     <main>
-      <h1>Film Watchlist</h1>
-      <button
-        onClick={markAllAsWatched}
-      >
+      <h1>Watchlist ({watchedCount} / {total} zhlédnuto)</h1>
+      
+      <AddFilmForm />
+
+      <button onClick={markAllAsWatched}>
         Označit vše jako zhlédnuté
       </button>
-      {films.map((film) => (
-        <FilmCard
-          key={film.title}
-          title={film.title}
-          year={film.year}
-          genre={film.genre}
-          rating={film.rating}
-          watched={film.watched}
-          onToggleWatched={toggleWatched}
-        />
-      ))}
+
+      {/*Vykreslenie zoznamu filmov*/}
+      <div>
+        {films.map((film) => (
+          <FilmCard
+            key={film.id}
+            id={film.id}
+            title={film.title}
+            year={film.year}
+            genre={film.genre}
+            rating={film.rating}
+            watched={film.watched}
+            onToggleWatched={toggleWatched}
+            onRemove={removeFilm}
+          />
+        ))}
+      </div>
     </main>
   );
 }
