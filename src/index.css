@@ -1,0 +1,56 @@
+/* (Svetlý režim) */
+:root {
+  /* Pozadie nie je čisto biele, ale má extrémne jemný fialový nádych (#f5f3ff) */
+  --bg-color: #f5f3ff; 
+  /* Text je veľmi tmavá, takmer čierna fialová pre lepšiu čitateľnosť */
+  --text-color: #171726; 
+  --card-bg: #ffffff;
+  --border-color: #ddd6fe;
+  
+  /* Hlavná farba aplikácie */
+  --primary-color: #7c3aed; 
+  --primary-hover: #6d28d9;
+  
+  /* Sémantické farby */
+  --success-color: #059669; /* Zelenú nechávame, lebo pre "hotovo/zhlédnuto" je najjasnejšia */
+  --danger-color: #e11d48; /* Ružovo-červená farba (Rose) sa k fialovej hodí viac */
+  --danger-hover: #be123c;
+
+  /* Trochu väčšie zaoblenie hrán a jemný fialový tieň pôsobia modernejšie */
+  --radius: 12px; 
+  --shadow: 0 4px 14px 0 rgba(124, 58, 237, 0.12);
+}
+
+/* (Dark mode) */
+/* Keď na <html> pridáme triedu .dark, tieto farby prepíšu tie pôvodné */
+html.dark {
+  --bg-color: #0b0914; /* Temná, sýto fialovo-čierna */
+  --text-color: #ede9fe;
+  --card-bg: #161224;
+  --border-color: #2e264d;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius);
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button:active {
+  transform: scale(0.98);
+}

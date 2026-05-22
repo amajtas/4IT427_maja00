@@ -1,4 +1,5 @@
 import type { Film } from "@/types/film.types";
+import styles from "./FilmCard.module.css";
 
 interface FilmCardProps extends Film {
   onToggleWatched: (id: string) => void;
@@ -16,17 +17,22 @@ function FilmCard({
   onRemove,
 }: FilmCardProps) {
   const isRatingValid = rating >= 1 && rating <= 10;
+  const cardClassName = watched ? `${styles.card} ${styles.watched}` : styles.card;
   return (
-    <div className="card" style={{ border: "1px solid gray", padding: "10px", margin: "10px" }}>
-      <h2>{title}</h2>
+    <div className={cardClassName}>
+      <h2 className={styles.title}>{title}</h2>
       <p>Rok: {year}</p>
       <p>Zaner: {genre}</p>
-      {isRatingValid ? <p>Hodnotenie: {rating}/10</p> : <p style={{ color: "red" }}>Neplatné hodnocení</p>}
+      {isRatingValid ? (
+        <p className={styles.info}>Hodnotenie: {rating}/10</p>
+      ) : (
+        <p className={styles.info} style={{ color: "var(--danger-color)" }}>Neplatné hodnocení</p>
+      )}
       {watched && <p>✓ Zhlédnuto</p>}
-      <button onClick={() => onToggleWatched(id)}>
+      <button className={styles.btnToggle} onClick={() => onToggleWatched(id)}>
         Změnit stav zhlédnutí
       </button>
-      <button onClick={() => onRemove(id)}>
+      <button className={styles.btnRemove} onClick={() => onRemove(id)}>
         Odebrat
       </button>
     </div>

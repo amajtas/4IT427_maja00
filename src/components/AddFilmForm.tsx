@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useWatchlist } from "../context/WatchlistContext"; // Náš hook pre prístup do skladu
+import styles from "./AddFilmForm.module.css";
 
 export function AddFilmForm() {
   // Vytiahneme si funkciu addFilm priamo z Contextu
@@ -34,23 +35,23 @@ export function AddFilmForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ border: "1px solid #ccc", padding: "15px", marginBottom: "20px" }}>
-      <h3>Pridať nový film</h3>
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <h3 className={styles.title}>Pridať nový film</h3>
       
-      <div style={{ marginBottom: "10px" }}>
+      <div className={styles.inputGroup}>
         <input type="text" placeholder="Názov filmu" value={title} onChange={(e) => setTitle(e.target.value)} required />
       </div>
-      <div style={{ marginBottom: "10px" }}>
+      <div className={styles.inputGroup}>
         <input type="number" placeholder="Rok vydania" value={year} onChange={(e) => setYear(Number(e.target.value) || "")} required />
       </div>
-      <div style={{ marginBottom: "10px" }}>
+      <div className={styles.inputGroup}>
         <input type="text" placeholder="Žáner" value={genre} onChange={(e) => setGenre(e.target.value)} required />
       </div>
-      <div style={{ marginBottom: "10px" }}>
+      <div className={styles.inputGroup}>
         <input type="number" placeholder="Hodnotenie (1-10)" min="1" max="10" value={rating} onChange={(e) => setRating(Number(e.target.value) || "")} required />
       </div>
       
-      <button type="submit">
+      <button className={styles.submitBtn} type="submit">
         Pridať do Watchlistu
       </button>
     </form>
